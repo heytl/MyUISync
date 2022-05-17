@@ -15,7 +15,11 @@ jobs:
       - name: 拉取项目
         run: |
           git clone https://gitee.com/newgateway/my.git my
-
+          
+      # 配置 git
+      - name: config git
+        run: git config --global user.email "heytl@qq.com"&&git config --global user.name "heytl"
+        
       - name: setup SSH keys and known_hosts
         run: |
           mkdir -p ~/.ssh
@@ -24,15 +28,13 @@ jobs:
           ssh-add - <<< "${{ secrets.RSA_PRIVATE_KEY }}"
         env:
           SSH_AUTH_SOCK: /tmp/ssh_agent.sock
-
+          
       - name: 安装依赖
         # 设置一下 env，就可以使用密钥了
         env:
           SSH_AUTH_SOCK: /tmp/ssh_agent.sock
         run: |
           cd my/web/my
-          git config --local user.email "heytl@qq.com"
-          git config --local user.name "heytl"
           # 初始化 git 项目
           git init
           git add -A
