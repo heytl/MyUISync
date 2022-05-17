@@ -21,12 +21,12 @@ jobs:
       - name: Setup key
         uses: webfactory/ssh-agent@v0.5.4
         with:
-         ssh-private-key: ${{ secrets.RSA_PRIVATE_KEY }}
-         run: |
-          cd web/my
-          git init
-          git add -A
-          git commit -m 'message'
-          git push -f git@github.com:heytl/heytl.github.io.git master
+          ssh-private-key: ${{ secrets.RSA_PRIVATE_KEY }}
+          run: |
+            cd web/my
+            git init
+            git add -A
+            git commit -m 'message'
+            git push -f git@github.com:heytl/heytl.github.io.git master
          
         
