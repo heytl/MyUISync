@@ -31,6 +31,8 @@ jobs:
           SSH_AUTH_SOCK: /tmp/ssh_agent.sock
         run: |
           cd my/web/my
+          git config --local user.email "heytl@qq.com"
+          git config --local user.name "heytl"
           # 初始化 git 项目
           git init
           git add -A
