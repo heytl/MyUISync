@@ -1,5 +1,5 @@
 
-name: 发布myui的web
+name: Sync_MyUI
  
 on:
   workflow_dispatch:
@@ -17,13 +17,13 @@ jobs:
           git clone https://gitee.com/newgateway/my.git my
 
       - name: setup SSH keys and known_hosts
-              run: |
-                mkdir -p ~/.ssh
-                ssh-keyscan github.com >> ~/.ssh/known_hosts
-                ssh-agent -a $SSH_AUTH_SOCK > /dev/null
-                ssh-add - <<< "${{ secrets.RSA_PRIVATE_KEY }}"
-              env:
-                SSH_AUTH_SOCK: /tmp/ssh_agent.sock
+        run: |
+          mkdir -p ~/.ssh
+          ssh-keyscan github.com >> ~/.ssh/known_hosts
+          ssh-agent -a $SSH_AUTH_SOCK > /dev/null
+          ssh-add - <<< "${{ secrets.RSA_PRIVATE_KEY }}"
+        env:
+          SSH_AUTH_SOCK: /tmp/ssh_agent.sock
 
       - name: 安装依赖
         # 设置一下 env，就可以使用密钥了
