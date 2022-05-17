@@ -1,0 +1,29 @@
+
+name: testSSH
+ 
+on:
+  workflow_dispatch:
+  schedule:
+   # 定时执行可参考https://tool.lu/crontab
+    - cron: 22 6 */3 * *
+    
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: setup SSH keys and known_hosts
+        run: |
+          mkdir -p ~/.ssh
+          ssh-keyscan github.com >> ~/.ssh/known_hosts
+          ssh-agent -a $SSH_AUTH_SOCK > /dev/null
+          ssh-add - <<< "${{ secrets.RSA_PRIVATE_KEY }}"
+        env:
+          SSH_AUTH_SOCK: /tmp/ssh_agent.sock
+      - name: clone repository
+        # clone 一个私有仓库
+        run: git clone git@github.com:heytl/MyUISync.git
+        # 设置一下 env，就可以使用密钥了
+        env:
+          SSH_AUTH_SOCK: /tmp/ssh_agent.sock
+
