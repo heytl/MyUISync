@@ -1,4 +1,4 @@
-name: Sync
+name: Sync_MyUI
  
 on:
   workflow_dispatch:
