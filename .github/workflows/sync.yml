@@ -1,0 +1,22 @@
+name: Sync
+ 
+on:
+  workflow_dispatch:
+  schedule:
+   # 定时执行可参考https://tool.lu/crontab
+    - cron: 22 6 */3 * *
+    
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Sync to Github
+        uses: wearerequired/git-mirror-action@master
+        env:
+          # 注意在 Settings->Secrets 配置 RSA_PRIVATE_KEY
+          SSH_PRIVATE_KEY: ${{ secrets.RSA_PRIVATE_KEY }}
+        with:
+          # 注意替换为你的 GitHub 源仓库地址
+          source-repo: https://gitee.com/newgateway/my.git
+          # 注意替换为你的 Gitee 目标仓库地址
+          destination-repo: git@github.com:heytl/my.git
