@@ -8,10 +8,8 @@ on:
    # 定时执行可参考https://tool.lu/crontab
     - cron: 22 6 */3 * *
     
-# 任务
 jobs:
-  build-and-deploy:
-    # 服务器环境：最新版 Ubuntu
+  build:
     runs-on: ubuntu-latest
     steps:
       # 拉取代码
@@ -20,15 +18,15 @@ jobs:
         with:
           persist-credentials: false
           repository: heytl/my
-     - name: Setup key
-       uses: webfactory/ssh-agent@v0.5.4
-       with:
+      - name: Setup key
+        uses: webfactory/ssh-agent@v0.5.4
+        with:
          ssh-private-key: ${{ secrets.RSA_PRIVATE_KEY }}
-       run: |
-        cd web/my
-        git init
-        git add -A
-        git commit -m 'message'
-        git push -f git@github.com:heytl/heytl.github.io.git master
+         run: |
+          cd web/my
+          git init
+          git add -A
+          git commit -m 'message'
+          git push -f git@github.com:heytl/heytl.github.io.git master
          
         
