@@ -27,6 +27,8 @@ jobs:
         continue-on-error: false
         run: |
           cd web/my
+          git config --global user.email "heytl@qq.com"
+          git config --global user.name "heytl!"   
           git init
           git add -A
           git commit -m 'message'
