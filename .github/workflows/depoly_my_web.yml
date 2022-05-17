@@ -40,5 +40,10 @@ jobs:
           git add -A
           git commit -m 'message'
           # 推送到指定库
-          git push -f git@github.com:heytl/heytl.github.io.git master
-        
+          # git push -f git@github.com:heytl/heytl.github.io.git master
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.ACCESS_TOKEN }}
+          repository: heytl/heytl.github.io
+
