@@ -1,5 +1,5 @@
 
-name: Sync_MyUI
+name: depoly_my_web
  
 on:
   workflow_dispatch:
