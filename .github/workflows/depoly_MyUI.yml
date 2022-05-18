@@ -23,6 +23,7 @@ jobs:
         with:
           persist-credentials: false
           repository: heytl/my
+          path: test
           # path: my-tools
 
       # 生成静态文件
@@ -34,7 +35,6 @@ jobs:
         # 使用别人写好的一个 action
         uses: JamesIves/github-pages-deploy-action@releases/v3
         with:
-          path: test
           # 这里的 ACCESS_TOKEN 名字需要和下文中的相对应
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
           # 打包后的文件部署到哪个分支上
