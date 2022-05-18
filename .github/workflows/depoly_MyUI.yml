@@ -23,7 +23,7 @@ jobs:
         with:
           persist-credentials: false
           repository: heytl/my
-          path: test
+#           path: test
           # path: my-tools
 
       # 生成静态文件
@@ -40,6 +40,6 @@ jobs:
           # 打包后的文件部署到哪个分支上
           BRANCH: gh-pages2
           # 打包后的文件在哪里
-          FOLDER: test/web/my
+          FOLDER: my/web/my
 #           REPOSITORY_NAME: heytl/heytl.github.io
 
