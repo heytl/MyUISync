@@ -41,5 +41,5 @@ jobs:
           BRANCH: gh-pages3
           # 打包后的文件在哪里
           FOLDER: my-ui/web/my
-#           REPOSITORY_NAME: heytl/heytl.github.io
+          REPOSITORY_NAME: heytl/heytl.github.io
 
